@@ -4,7 +4,7 @@ export default function Index() {
   return (
     <>
       <h1>Hello World!</h1>
-      <Link to="/demo">Go to Demo Page</Link>
+      <Link to="/notes">Go to Notes Page</Link>
     </>
   );
 }
