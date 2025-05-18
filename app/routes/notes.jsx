@@ -38,6 +38,10 @@ export async function action({ request }) {
   console.log("Updated notes:", updatedNotes);
   await storeNotes(updatedNotes);
 
+  // to add extra delay to see loading state
+  // This is not necessary in production, but useful for demo purposes
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+
   return redirect("/notes");
 }
 
