@@ -35,6 +35,24 @@ export default function App() {
   );
 }
 
+export function ErrorBoundary({ error }) {
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <h1>An error occurred!</h1>
+        <p>{error.message}</p>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
 export function links() {
   return [
     {
