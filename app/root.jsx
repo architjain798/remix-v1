@@ -1,4 +1,5 @@
 import {
+  Link,
   Links,
   LiveReload,
   Meta,
@@ -43,8 +44,16 @@ export function ErrorBoundary({ error }) {
         <Links />
       </head>
       <body>
-        <h1>An error occurred!</h1>
-        <p>{error.message}</p>
+        <header>
+          <MainNavigation />
+        </header>
+        <main className="error">
+          <h1>An error occurred!</h1>
+          <p>{error.message}</p>
+          <p>
+            Back to <Link to="/">Home</Link>
+          </p>
+        </main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
