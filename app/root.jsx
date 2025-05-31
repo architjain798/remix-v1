@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useCatch,
 } from "@remix-run/react";
 import styles from "./styles/main.css";
 import MainNavigation from "./components/MainNavigation";
@@ -28,6 +29,39 @@ export default function App() {
           <MainNavigation />
         </header>
         <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+export function CatchBoundary({ error }) {
+  const caughtResponse = useCatch();
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+        <title>
+          {caughtResponse.status} - {caughtResponse.statusText}
+        </title>
+      </head>
+      <body>
+        <header>
+          <MainNavigation />
+        </header>
+        <main className="error">
+          <h1>{caughtResponse.statusText}</h1>
+          <p>
+            {caughtResponse.data?.message || "An unexpected error occurred."}
+          </p>
+          <p>
+            Back to <Link to="/">Home</Link>
+          </p>
+        </main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
